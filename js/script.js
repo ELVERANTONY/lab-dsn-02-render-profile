@@ -6,6 +6,7 @@ const magneticItems = document.querySelectorAll(".magnetic");
 const tiltCards = document.querySelectorAll(".tilt-card");
 const interactiveCards = document.querySelectorAll(".interactive-card");
 const profileImage = document.getElementById("profile-image");
+const typewriterElement = document.querySelector(".typewriter");
 let ticking = false;
 
 const toggleHeaderState = () => {
@@ -121,3 +122,43 @@ if (profileImage) {
     profileImage.src = "assets/img/profile-placeholder.svg";
   });
 }
+
+
+if (typewriterElement) {
+  const text = typewriterElement.dataset.text ?? "";
+  let index = 0;
+  let isDeleting = false;
+
+  const tick = () => {
+    if (!isDeleting) {
+      index += 1;
+      typewriterElement.textContent = text.slice(0, index);
+
+      if (index === text.length) {
+        window.setTimeout(() => {
+          isDeleting = true;
+          tick();
+        }, 1600);
+        return;
+      }
+
+      window.setTimeout(tick, 95);
+      return;
+    }
+
+    index -= 1;
+    typewriterElement.textContent = text.slice(0, index);
+
+    if (index === 0) {
+      isDeleting = false;
+      window.setTimeout(tick, 500);
+      return;
+    }
+
+    window.setTimeout(tick, 55);
+  };
+
+  typewriterElement.textContent = "";
+  tick();
+}
+

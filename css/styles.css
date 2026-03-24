@@ -198,6 +198,22 @@ textarea {
   max-width: 11ch;
 }
 
+.typewriter {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.08em;
+}
+
+.typewriter::after {
+  content: "";
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  border-radius: 999px;
+  background: currentColor;
+  animation: caret-blink 900ms steps(1) infinite;
+}
+
 .hero-role {
   margin: 1rem 0;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -622,6 +638,17 @@ textarea {
   transition-delay: 220ms;
 }
 
+@keyframes caret-blink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes drift {
   from {
     transform: translate3d(0, 0, 0) scale(1);
@@ -733,6 +760,9 @@ textarea {
     opacity: 1;
   }
 }
+
+
+
 
 
 
