@@ -1,1 +1,1 @@
-﻿# lab-dsn-02-render-crud
+﻿# lab-dsn-02-render-profile
